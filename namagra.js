@@ -37,7 +37,7 @@ function startVue(dictionary) {
       ],
       wordlist: dictionary,
       isLoaded: true,
-      matchLength: false
+      matchLength: true
     },
 
     methods: {
