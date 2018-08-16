@@ -4,20 +4,29 @@
   <head>
     <meta charset="utf-8">
     <title>Namagra - Anagram Solver</title>
-      <!-- Import Vue-->
-      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-      <!-- Import Vue HTTP client-->
-      <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Import Vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </head>
 
   <body>
 
-    <h1>Namagra</h1>
-    <h2>Anagram Solver</h2>
+    <div class="middle">
 
-    <div id="app">
-      <p> Load dictionary? (Warning ~5.8MB) </p>
-      <input id="loadButton" type="button" value="Load" />
+      <header>
+        <h1>Namagra</h1>
+        <h2>Anagram Solver</h2>
+      </header>
+
+      <div id="app">
+        <p>Load dictionary? (Warning ~5.8MB)</p>
+        <input id="loadButton" type="button" value="Load" onclick="loadApplication();" />
+      </div>
+
+      <footer>
+        <p>Source available at <a href="https://github.com/ben-clegg/namagra/">GitHub</a>!</p>
+      </footer>
+
     </div>
 
 

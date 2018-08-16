@@ -1,0 +1,65 @@
+// Colours
+
+$purple: #6F256F;
+$text-light: lighten($purple, 45%);
+$text-dark: darken($purple, 10%);
+
+$grey: #777;
+$bg-dark: darken($grey, 50%);
+$bg-header: darken($grey, 30%);
+$bg-light: #eee;
+
+// Variables
+$screen-width: 800px;
+
+html, body {
+  height: 100%;
+  background: $bg-dark;
+
+}
+
+header, footer {
+  background: $bg-header;
+  color: $text-light;
+  margin: 0px;
+  text-align: center;
+  padding: 8px;
+
+  a {
+    color: $text-light;
+  }
+}
+
+// Middle column
+.middle {
+  @media(min-width: $screen-width) {
+      width: $screen-width;
+  }
+  @media(max-width: $screen-width) {
+      width: 100%;
+  }
+  margin: 0 auto;
+
+  min-height: 100%;
+  background: bg-light;
+  display: block;
+  padding: 0px;
+
+
+}
+
+#app {
+  color: $text-dark;
+  background: $bg-light;
+  padding: 8px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 8px;
+  li {
+
+  }
+}
