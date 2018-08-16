@@ -36,7 +36,8 @@ function startVue(dictionary) {
       results: [
       ],
       wordlist: dictionary,
-      isLoaded: true
+      isLoaded: true,
+      matchLength: false
     },
 
     methods: {
@@ -45,12 +46,14 @@ function startVue(dictionary) {
         // Reset results
         this.results = [];
 
+        // Remove spaces
+        this.input = this.input.replace(/\s/g, '');
         // Extract characters
         var chars = [];
         for (var i = 0; i < this.input.length; i++){
           chars.push(this.input[i].toLowerCase());
         }
-        var variations = getVariations(chars, true);
+        var variations = getVariations(chars, this.matchLength);
         var matching = getExisting(variations, this.wordlist);
         this.results = matching;
       }
@@ -75,7 +78,7 @@ function getExisting(toCheck, wordlist) {
   return matches;
 }
 
-function getVariations(charArray, anagramOnly) {
+function getVariations(charArray, matchLength) {
   // If no characters remain, return an empty array (of strings)
   if(charArray.length === 0) {
     return [];
@@ -91,7 +94,7 @@ function getVariations(charArray, anagramOnly) {
       // Remove the character from the pool
       cloned.splice(i, 1);
 
-      var subVariations = getVariations(cloned, anagramOnly);
+      var subVariations = getVariations(cloned, matchLength);
       //console.log(char);
       //console.log(cloned);
       for (var v = 0; v < subVariations.length; v++) {
@@ -100,7 +103,7 @@ function getVariations(charArray, anagramOnly) {
         variations.push(str);
       }
       // Add the letter on its own for base case
-      if(anagramOnly === true) {
+      if(matchLength === true) {
         // Only finding direct anagrams (no sub-strings)
         if (subVariations.length === 0) {
           // Only do this if there are no sub-options
