@@ -18,7 +18,7 @@ function loadApplication() {
 
 function reqListener(e) {
     var treeData = JSON.parse(this.responseText);
-    
+
     showVueApp();
     startVue(treeData);
 }
@@ -64,8 +64,12 @@ function getExisting(toCheck, wordlist) {
   var matches = [];
   for (var i = 0; i < toCheck.length; i++) {
     var word = toCheck[i];
-    if (wordlist[word]) {
-      matches.push(word);
+    // Only add if not already matched
+    if(matches.indexOf(word) === -1) {
+      // Check if matches a word in dictionary
+      if (wordlist[word]) {
+        matches.push(word);
+      }
     }
   }
   return matches;
