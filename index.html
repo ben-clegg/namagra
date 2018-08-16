@@ -6,20 +6,26 @@
     <title>Namagra - Anagram Solver</title>
       <!-- Import Vue-->
       <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+      <!-- Import Vue HTTP client-->
+      <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
   </head>
 
   <body>
 
+    <h1>Namagra</h1>
+    <h2>Anagram Solver</h2>
+
     <div id="app">
       <input v-model="input">
-      <button v-on:click="findSolutions">Submit</button>
+      <button v-on:click="findSolutions">Solve!</button>
 
       <ul>
         <li v-for="result in results">
-          {{ result.text }}
+          {{ result }}
         </li>
       </ul>
     </div>
+
 
     <script src="namagra.js"></script>
 
