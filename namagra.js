@@ -1,16 +1,30 @@
 var wordlist;
 const wordlistURI = 'https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json';
 
-var oReq = new XMLHttpRequest();
-oReq.onload = reqListener;
-oReq.open("get", wordlistURI, true);
-oReq.send();
+document.getElementById("loadButton").onclick = loadApplication;
+
+function changeButton() {
+  document.getElementById("loadButton").value = 'Loading...';
+  document.getElementById("loadButton").disabled = 'disabled';
+}
+
+function loadApplication() {
+  changeButton();
+  var oReq = new XMLHttpRequest();
+  oReq.onload = reqListener;
+  oReq.open("get", wordlistURI, true);
+  oReq.send();
+}
 
 function reqListener(e) {
     var treeData = JSON.parse(this.responseText);
-    console.log(treeData);
-
+    
+    showVueApp();
     startVue(treeData);
+}
+
+function showVueApp() {
+  document.getElementById("app").innerHTML = '<input v-model="input"><button v-on:click="findSolutions">Solve!</button><ul><li v-for="result in results">{{ result }}</li></ul>';
 }
 
 function startVue(dictionary) {

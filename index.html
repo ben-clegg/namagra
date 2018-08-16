@@ -16,14 +16,8 @@
     <h2>Anagram Solver</h2>
 
     <div id="app">
-      <input v-model="input">
-      <button v-on:click="findSolutions">Solve!</button>
-
-      <ul>
-        <li v-for="result in results">
-          {{ result }}
-        </li>
-      </ul>
+      <p> Load dictionary? (Warning ~5.8MB) </p>
+      <input id="loadButton" type="button" value="Load" />
     </div>
 
 
